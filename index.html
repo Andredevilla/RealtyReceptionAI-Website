@@ -149,7 +149,173 @@
   </div>
   <div class="hero__fade"></div>
 </section>
-<!-- EDUCATION SECTION -->
+<section class="calls-section" id="how-it-handles-calls">
+  <div class="calls-section__inner">
+    <h2 class="calls-section__heading">How your AI receptionist handles every call</h2>
+    <div class="calls-section__cards">
+
+      <article class="call-card call-card--answer">
+        <h3>Ava <span class="call-card__pill call-card__pill--answer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2f6fe0" stroke-width="2" stroke-linecap="round"><path d="M4 12v0M8 8v8M12 5v14M16 8v8M20 12v0"/></svg>answers</span> every call, instantly</h3>
+        <p>She picks up on the first ring, greets the caller, and captures why they're calling — in real time, then sends all the relevant call information straight to you.</p>
+
+        <div class="call-card__timer">
+          <div class="call-card__timer-value">00:26</div>
+          <div class="call-card__timer-label"><span class="call-card__live-dot"></span>Live call</div>
+        </div>
+
+        <div class="waveform" id="waveform"></div>
+
+        <div class="call-card__panel">
+          <div class="tabs" role="tablist">
+            <button type="button" class="tab is-active" data-tab="transcription">✦ Transcription</button>
+            <button type="button" class="tab" data-tab="info">Caller info</button>
+            <button type="button" class="tab" data-tab="sent">Sent to agent</button>
+            <button type="button" class="tab" data-tab="recap">Recap</button>
+          </div>
+          <div class="tab-content">
+            <div class="tab-panel is-active" data-panel="transcription">
+              <div class="transcript">
+                <div class="transcript__bubble transcript__bubble--in">Hi, I saw 128 Maple Ave online — is it still available?</div>
+                <div class="transcript__bubble transcript__bubble--out">It is! 3 bed, 2 bath at $525,000. Would you like to tour it?</div>
+                <div class="transcript__bubble transcript__bubble--in">Yes, this weekend if possible. I'm pre-approved to $550k.</div>
+                <div class="transcript__bubble transcript__bubble--out">Great — I have Saturday at 2 PM. May I get your name and number?</div>
+                <div class="transcript__bubble transcript__bubble--in">Daniel Reyes, 555-0142.</div>
+              </div>
+            </div>
+            <div class="tab-panel" data-panel="info">
+              <div class="caller-info">
+                <span class="caller-info__label">Name</span><span class="caller-info__value">Daniel Reyes</span>
+                <span class="caller-info__label">Phone</span><span class="caller-info__value">(555) 012-0142</span>
+                <span class="caller-info__label">Reason</span><span class="caller-info__value">Buyer — interested in 128 Maple Ave</span>
+                <span class="caller-info__label">Budget</span><span class="caller-info__value">Pre-approved up to $550,000</span>
+                <span class="caller-info__label">Timeline</span><span class="caller-info__value">Wants a weekend tour</span>
+                <span class="caller-info__label">Best time</span><span class="caller-info__value">Saturday, 2:00 PM</span>
+              </div>
+            </div>
+            <div class="tab-panel" data-panel="sent">
+              <div class="sent-email">
+                <div class="sent-email__header">
+                  <div><span class="sent-email__label">To:</span> you@brokerage.com</div>
+                  <div><span class="sent-email__label">From:</span> Ava · AI Receptionist</div>
+                  <div><span class="sent-email__label">Subject:</span> <strong>New lead — 128 Maple Ave (Daniel Reyes)</strong></div>
+                </div>
+                <div>New buyer lead from a 3:14 PM call:</div>
+                <div class="sent-email__list">
+                  <div>• Daniel Reyes · (555) 012-0142</div>
+                  <div>• Pre-approved up to $550,000</div>
+                  <div>• Booked Saturday 2:00 PM tour</div>
+                </div>
+                <div class="sent-email__recap-title">Call recap</div>
+                <p>Buyer Daniel Reyes called about 128 Maple Ave, confirmed pre-approval to $550k, and scheduled a weekend showing — a positive, ready-to-move lead. Duration 3:12 · Sentiment: positive.</p>
+                <span class="sent-email__attachment">call-transcript.pdf</span>
+              </div>
+            </div>
+            <div class="tab-panel" data-panel="recap">
+              <div class="recap">
+                <div class="recap__title">Call summary</div>
+                <p>Buyer Daniel Reyes called about 128 Maple Ave, confirmed pre-approval to $550k, and scheduled a weekend showing — a positive, ready-to-move lead.</p>
+                <div class="recap__list">
+                  <div>• Inquired about 128 Maple Ave ($525,000)</div>
+                  <div>• Pre-approved up to $550,000</div>
+                  <div>• Booked Saturday 2:00 PM showing</div>
+                </div>
+                <div class="recap__meta">Duration 3:12 · Sentiment: positive</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="call-card call-card--book">
+        <h3>Then Ava <span class="call-card__pill call-card__pill--book"><svg width="18" height="18" viewBox="0 0 24 24" fill="#2f6fe0"><path d="M12 2l2.2 6.6H21l-5.4 4 2.1 6.4L12 15.6 6.3 19l2.1-6.4-5.4-4h6.8z"/></svg>books</span> the showing</h3>
+        <p>She screens the lead, checks your calendar, and locks in a showing before they call the next agent.</p>
+
+        <div class="calendar">
+          <div class="calendar__header">
+            <div class="calendar__nav"><span class="calendar__arrows">‹ ›</span><span class="calendar__month">May 2025</span></div>
+            <span class="calendar__view">Week ▾</span>
+          </div>
+          <div class="calendar__daynames">
+            <div></div>
+            <div class="calendar__dayname"><div class="calendar__dow">SUN</div><div class="calendar__date">25</div></div>
+            <div class="calendar__dayname"><div class="calendar__dow">MON</div><div class="calendar__date">26</div></div>
+            <div class="calendar__dayname"><div class="calendar__dow">TUE</div><div class="calendar__date">27</div></div>
+            <div class="calendar__dayname"><div class="calendar__dow">WED</div><div class="calendar__date">28</div></div>
+            <div class="calendar__dayname"><div class="calendar__dow">THU</div><div class="calendar__date">29</div></div>
+            <div class="calendar__dayname"><div class="calendar__dow">FRI</div><div class="calendar__date">30</div></div>
+            <div class="calendar__dayname"><div class="calendar__dow">SAT</div><div class="calendar__date calendar__date--today">31</div></div>
+          </div>
+          <div class="calendar__grid">
+            <div class="calendar__hours"><span>9 AM</span><span>10</span><span>11</span><span>12 PM</span><span>1</span><span>2</span><span>3</span><span>4</span></div>
+            <div class="calendar__col">
+              <div class="calendar__event" style="top:31px">Open house prep</div>
+              <div class="calendar__event" style="top:93px">Zillow leads</div>
+            </div>
+            <div class="calendar__col">
+              <div class="calendar__event" style="top:0">Team standup</div>
+              <div class="calendar__event" style="top:62px">Buyer callback</div>
+              <div class="calendar__event" style="top:124px">Photos — 45 Elm</div>
+              <div class="calendar__event" style="top:186px">CMA — Oak St</div>
+            </div>
+            <div class="calendar__col">
+              <div class="calendar__event" style="top:31px">Listing prep</div>
+              <div class="calendar__event" style="top:77px">Broker tour</div>
+              <div class="calendar__event" style="top:124px">Closing docs</div>
+              <div class="calendar__event" style="top:186px">Follow-up calls</div>
+            </div>
+            <div class="calendar__col">
+              <div class="calendar__event" style="top:0">New listing input</div>
+              <div class="calendar__event" style="top:62px">1:1 Elena</div>
+              <div class="calendar__event" style="top:108px">Inspection — Pine</div>
+              <div class="calendar__event" style="top:155px">Showing — 22 Birch</div>
+            </div>
+            <div class="calendar__col">
+              <div class="calendar__event" style="top:15px">Coffee w/ lender</div>
+              <div class="calendar__event" style="top:93px">Inspection</div>
+              <div class="calendar__event" style="top:139px">Offer review</div>
+              <div class="calendar__event" style="top:186px">Open house — Cedar</div>
+            </div>
+            <div class="calendar__col">
+              <div class="calendar__event" style="top:31px">Closing — Elm St</div>
+              <div class="calendar__event" style="top:93px">Client lunch</div>
+              <div class="calendar__event" style="top:139px">Paperwork</div>
+              <div class="calendar__event" style="top:201px">Sign install</div>
+            </div>
+            <div class="calendar__col">
+              <div class="calendar__event" style="top:31px">Open house — 12 Oak</div>
+              <div class="calendar__event" style="top:93px">Buyer tour</div>
+              <div class="calendar__event calendar__event--highlight" style="top:155px;height:54px">
+                <div class="calendar__event-title">Showing</div>
+                <div>128 Maple Ave</div>
+                <div>2:00 PM</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="calendar-mobile">
+          <div class="calendar-mobile__header">
+            <span class="calendar-mobile__day">Saturday, May 31</span>
+            <span class="calendar__view">Day ▾</span>
+          </div>
+          <div class="calendar-mobile__list">
+            <div class="calendar-mobile__row"><span class="calendar-mobile__time">10 AM</span><div class="calendar-mobile__event">Open house — 12 Oak</div></div>
+            <div class="calendar-mobile__row"><span class="calendar-mobile__time">12 PM</span><div class="calendar-mobile__event">Buyer tour — Cedar St</div></div>
+            <div class="calendar-mobile__row"><span class="calendar-mobile__time">2 PM</span><div class="calendar-mobile__event calendar-mobile__event--highlight"><div class="calendar__event-title">Showing · 128 Maple Ave</div><div>Daniel Reyes · booked by Ava</div></div></div>
+            <div class="calendar-mobile__row"><span class="calendar-mobile__time">4 PM</span><div class="calendar-mobile__event">Follow-up calls</div></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="stats" id="stats">
+      <div class="stat"><div class="stat__value" data-target="78" data-decimals="0" data-suffix="%">78%</div><p class="stat__caption">Of buyers go with the first agent who responds.</p></div>
+      <div class="stat"><div class="stat__value" data-target="2" data-decimals="0" data-prefix="&lt;" data-suffix="s">&lt;2s</div><p class="stat__caption">Average answer time — 24/7, every call picked up.</p></div>
+      <div class="stat"><div class="stat__value" data-target="99.9" data-decimals="1" data-suffix="%">99.9%</div><p class="stat__caption">Uptime guaranteed on your AI receptionist.</p></div>
+    </div>
+  </div>
+</section>
 <!-- HOW WE WORK SECTION -->
 <!-- FINAL CTA -->
 <!-- FOOTER -->

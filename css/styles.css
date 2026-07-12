@@ -106,6 +106,35 @@ button { font: inherit; cursor: pointer; }
 
   .hero__phone-outer { margin-top: 70px; height: 534px; display: flex; justify-content: center; align-items: flex-start; }
   .phone-wrap { transform: scale(.87); transform-origin: top center; }
+
+  .calls-section { padding: 56px 20px 64px; }
+  .calls-section__heading { font-size: 34px; margin: 0 0 28px; }
+  .calls-section__cards { flex-direction: column; gap: 22px; }
+  .call-card { flex: none; border-radius: 26px; padding: 30px 24px; }
+  .call-card--answer { padding-bottom: 30px; }
+  .call-card h3 { font-size: 24px; line-height: 1.24; }
+  .call-card p { font-size: 15.5px; margin-top: 14px; }
+  .call-card__pill { font-size: 20px; padding: 4px 11px 4px 9px; }
+  .call-card__timer { margin: 30px 0 4px; }
+  .call-card__timer-value { font-size: 46px; }
+  .call-card__timer-label { font-size: 15px; }
+  .waveform { gap: 3px; height: 76px; margin-top: 8px; }
+  .waveform__bar { flex: 1 1 0; width: auto; }
+  .call-card__panel { margin-top: 26px; padding-top: 0; }
+  .tabs { gap: 4px; border-radius: 13px; padding: 4px; }
+  .tab { padding: 7px 11px; font-size: 12.5px; border-radius: 8px; }
+  .tab-content { margin-top: 10px; border-radius: 15px; padding: 16px; min-height: 240px; }
+  .transcript { font-size: 13px; }
+  .caller-info { font-size: 13.5px; gap: 11px 16px; }
+  .sent-email, .recap { font-size: 13px; }
+
+  .calendar { display: none; }
+  .calendar-mobile { display: block; margin-top: 24px; border-radius: 15px; background: #fff; border: 1px solid rgba(20,30,50,.1); box-shadow: 0 10px 28px rgba(40,60,100,.1); overflow: hidden; color: #3c4450; }
+
+  .stats { grid-template-columns: 1fr; gap: 2px; border-radius: 26px; margin-top: 34px; }
+  .stat { padding: 28px 26px; }
+  .stat__value { font-size: 52px; }
+  .stat__caption { font-size: 15.5px; margin-top: 10px; }
 }
 
 /* ===== PHONE DEMO ===== */
@@ -153,3 +182,98 @@ button { font: inherit; cursor: pointer; }
 .phone:not(.phone--started) .phone__lock { display: flex; }
 .phone.phone--started .phone__lock { display: none; }
 .phone.phone--started.phone--drag-zero .phone__swipe-hint { display: block; }
+
+/* ===== CALLS SECTION ===== */
+.calls-section { width: 100%; background: linear-gradient(180deg,#ffffff 0%,#ffffff 82%,#f4f6fa 100%); padding: 96px 40px 110px; }
+.calls-section__inner { max-width: 1440px; margin: 0 auto; }
+.calls-section__heading { font-size: 60px; font-weight: 800; letter-spacing: -.025em; color: var(--ink); margin: 0 0 44px; text-wrap: balance; }
+.calls-section__cards { display: flex; gap: 26px; align-items: stretch; flex-wrap: wrap; }
+
+.call-card { flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; border-radius: 30px; padding: 44px 44px 40px; overflow: hidden; }
+.call-card h3 { font-size: 29px; font-weight: 800; line-height: 1.22; letter-spacing: -.01em; margin: 0; }
+.call-card p { font-size: 17px; line-height: 1.5; margin: 16px 0 0; max-width: 470px; }
+.call-card__pill { display: inline-flex; align-items: center; gap: 7px; vertical-align: middle; padding: 5px 13px 5px 11px; border-radius: 999px; font-size: 24px; }
+
+.call-card--answer { color: #fff; background: linear-gradient(155deg,#6ea2f6 0%,#4f86ee 55%,#4278e6 100%); box-shadow: 0 24px 60px rgba(60,110,220,.28); }
+.call-card--answer p { color: rgba(255,255,255,.92); }
+.call-card__pill--answer { background: rgba(255,255,255,.9); color: #2f6fe0; box-shadow: 0 4px 12px rgba(30,60,140,.2); }
+
+.call-card--book { background: var(--surface-soft); border: 1px solid rgba(20,30,50,.06); box-shadow: 0 24px 60px rgba(40,60,100,.1); }
+.call-card--book h3 { color: var(--ink); }
+.call-card--book p { color: var(--ink-soft); }
+.call-card__pill--book { background: #fff; color: var(--ink); box-shadow: 0 4px 12px rgba(30,40,70,.12); }
+
+.call-card__timer { text-align: center; margin: 44px 0 6px; }
+.call-card__timer-value { font-size: 56px; font-weight: 800; letter-spacing: .01em; color: rgba(255,255,255,.9); }
+.call-card__timer-label { display: inline-flex; align-items: center; gap: 8px; font-size: 17px; font-weight: 700; color: rgba(255,255,255,.9); margin-top: 2px; }
+.call-card__live-dot { width: 9px; height: 9px; border-radius: 50%; background: #ff5b52; }
+
+.waveform { display: flex; align-items: flex-end; gap: 4px; height: 94px; margin: 10px 0 0; }
+.waveform__bar { flex: none; width: 4px; border-radius: 2px; background: #fff; }
+
+.call-card__panel { margin-top: auto; padding-top: 30px; }
+.tabs { display: flex; flex-wrap: wrap; gap: 5px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.2); border-radius: 14px; padding: 5px; }
+.tab { display: inline-flex; align-items: center; gap: 6px; padding: 8px 13px; border: none; border-radius: 9px; font-size: 13.5px; font-weight: 700; background: transparent; color: rgba(255,255,255,.82); }
+.tab.is-active { background: rgba(255,255,255,.92); color: #2f6fe0; }
+.tab-content { margin-top: 12px; border-radius: 16px; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.22); padding: 18px; min-height: 252px; color: #fff; }
+.tab-panel { display: none; }
+.tab-panel.is-active { display: block; }
+
+.transcript { display: flex; flex-direction: column; gap: 9px; font-size: 13.5px; line-height: 1.42; }
+.transcript__bubble { max-width: 86%; padding: 9px 13px; }
+.transcript__bubble--in { align-self: flex-start; background: rgba(255,255,255,.18); border-radius: 14px 14px 14px 4px; }
+.transcript__bubble--out { align-self: flex-end; background: #fff; color: #2f6fe0; font-weight: 600; border-radius: 14px 14px 4px 14px; }
+
+.caller-info { display: grid; grid-template-columns: auto 1fr; gap: 12px 18px; font-size: 14px; align-items: baseline; }
+.caller-info__label { opacity: .7; }
+.caller-info__value { font-weight: 700; }
+
+.sent-email { font-size: 13.5px; line-height: 1.5; }
+.sent-email__header { display: flex; flex-direction: column; gap: 4px; border-bottom: 1px solid rgba(255,255,255,.22); padding-bottom: 11px; margin-bottom: 11px; }
+.sent-email__label { opacity: .7; }
+.sent-email__list { display: flex; flex-direction: column; gap: 5px; margin: 9px 0 11px; padding-left: 2px; }
+.sent-email__recap-title { font-weight: 700; margin-bottom: 4px; }
+.sent-email p { margin: 0 0 11px; font-size: inherit; }
+.sent-email__attachment { display: inline-flex; align-items: center; gap: 7px; background: rgba(255,255,255,.18); padding: 6px 11px; border-radius: 8px; font-weight: 600; }
+
+.recap { font-size: 14px; line-height: 1.5; }
+.recap__title { font-weight: 700; margin-bottom: 8px; }
+.recap p { margin: 0 0 12px; font-size: inherit; }
+.recap__list { display: flex; flex-direction: column; gap: 6px; }
+.recap__meta { opacity: .75; margin-top: 12px; font-size: 13px; }
+
+.calendar { margin-top: 28px; border-radius: 16px; background: #fff; border: 1px solid rgba(20,30,50,.1); box-shadow: 0 10px 28px rgba(40,60,100,.1); overflow: hidden; color: #3c4450; }
+.calendar__header { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; border-bottom: 1px solid var(--surface-soft); }
+.calendar__nav { display: flex; align-items: center; gap: 12px; }
+.calendar__arrows { display: inline-flex; gap: 8px; font-size: 15px; color: #98a1af; }
+.calendar__month { font-size: 15px; font-weight: 700; color: #1f2733; }
+.calendar__view { display: inline-flex; align-items: center; gap: 6px; border: 1px solid #d8dde5; border-radius: 8px; padding: 5px 11px; font-size: 12px; font-weight: 600; color: var(--ink-soft); }
+.calendar__daynames { display: grid; grid-template-columns: 36px repeat(7,1fr); border-bottom: 1px solid var(--surface-soft); }
+.calendar__dayname { text-align: center; padding: 7px 0; }
+.calendar__dow { font-size: 9px; letter-spacing: .06em; color: #8a94a2; }
+.calendar__date { font-size: 14px; font-weight: 600; color: #1f2733; }
+.calendar__date--today { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: #2f6fe0; color: #fff; font-size: 13px; }
+.calendar__grid { display: grid; grid-template-columns: 36px repeat(7,1fr); height: 248px; }
+.calendar__hours { display: flex; flex-direction: column; justify-content: space-between; padding: 1px 5px 6px; font-size: 9px; color: #9aa4b2; text-align: right; }
+.calendar__col { position: relative; border-left: 1px solid var(--surface-soft); background: repeating-linear-gradient(to bottom, transparent 0, transparent 30px, #f2f4f8 30px, #f2f4f8 31px); }
+.calendar__event { position: absolute; left: 2px; right: 2px; height: 26px; border-radius: 5px; padding: 3px 5px; font-size: 9.5px; line-height: 1.15; overflow: hidden; background: #e6eefb; color: #2f6fe0; font-weight: 600; }
+.calendar__event--highlight { background: #2f6fe0; color: #fff; box-shadow: 0 4px 10px rgba(47,111,224,.4); font-size: 10px; padding: 5px 7px; }
+.calendar__event-title { font-weight: 700; }
+.calendar__event--highlight > div { opacity: .92; }
+.calendar__event--highlight > .calendar__event-title { opacity: 1; }
+
+.calendar-mobile { display: none; }
+.calendar-mobile__header { display: flex; align-items: center; justify-content: space-between; padding: 13px 15px; border-bottom: 1px solid var(--surface-soft); }
+.calendar-mobile__day { font-size: 15px; font-weight: 700; color: #1f2733; }
+.calendar-mobile__list { padding: 6px 0; }
+.calendar-mobile__row { display: grid; grid-template-columns: 52px 1fr; align-items: center; padding: 9px 15px; gap: 12px; }
+.calendar-mobile__time { font-size: 11px; color: #9aa4b2; text-align: right; }
+.calendar-mobile__event { border-radius: 8px; padding: 8px 11px; background: #e6eefb; color: #2f6fe0; font-weight: 600; font-size: 13px; }
+.calendar-mobile__event--highlight { border-radius: 9px; padding: 10px 12px; background: #2f6fe0; color: #fff; box-shadow: 0 6px 16px rgba(47,111,224,.4); font-weight: normal; }
+.calendar-mobile__event--highlight .calendar__event-title { font-size: 13.5px; }
+.calendar-mobile__event--highlight > div:last-child { opacity: .92; font-size: 12.5px; margin-top: 2px; }
+
+.stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: rgba(20,30,50,.08); border-radius: 30px; overflow: hidden; border: 1px solid rgba(20,30,50,.06); box-shadow: 0 24px 60px rgba(40,60,100,.1); margin: 64px 0 0; }
+.stat { background: var(--surface-soft); padding: 40px 44px; }
+.stat__value { font-family: var(--font-serif); font-weight: 500; font-size: 66px; line-height: 1; letter-spacing: -.01em; color: #2f6fe0; }
+.stat__caption { font-size: 17px; line-height: 1.45; color: var(--ink-soft); margin: 16px 0 0; max-width: 280px; }

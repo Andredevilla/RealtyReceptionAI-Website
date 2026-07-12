@@ -116,10 +116,72 @@ export function initPhoneDemo() {
   });
 }
 
+export function generateWaveformBars(count) {
+  const bars = [];
+  for (let i = 0; i < count; i++) {
+    const t = i / (count - 1);
+    const env = t < 0.5 ? (0.55 + 0.45 * Math.sin(t * Math.PI * 3)) : Math.max(0.12, 1 - (t - 0.5) * 1.85);
+    const v = 0.6 + 0.4 * Math.abs(Math.sin(i * 1.7));
+    const h = Math.round(8 + env * v * 80);
+    const o = t < 0.5 ? 0.92 : Math.max(0.26, 0.92 - (t - 0.5) * 1.25);
+    bars.push({ h, o: Math.round(o * 100) / 100 });
+  }
+  return bars;
+}
+
+function renderWaveform() {
+  const el = document.getElementById('waveform');
+  if (!el) return;
+  el.innerHTML = generateWaveformBars(46).map(
+    bar => `<span class="waveform__bar" style="height:${bar.h}px;opacity:${bar.o}"></span>`
+  ).join('');
+}
+
+export function initTabs() {
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.tab-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      tabs.forEach(t => t.classList.toggle('is-active', t === tab));
+      panels.forEach(p => p.classList.toggle('is-active', p.dataset.panel === target));
+    });
+  });
+}
+
+export function initStatCounters() {
+  const root = document.getElementById('stats');
+  const values = document.querySelectorAll('.stat__value');
+  if (!root || !values.length) return;
+
+  const format = (el, v) => (el.dataset.prefix || '') + v.toFixed(Number(el.dataset.decimals)) + (el.dataset.suffix || '');
+  values.forEach(el => { el.textContent = format(el, 0); });
+
+  const run = () => {
+    const dur = 1400, start = performance.now();
+    const tick = (now) => {
+      const p = Math.min(1, (now - start) / dur);
+      const eased = easeOutCubic(p);
+      values.forEach(el => { el.textContent = format(el, Number(el.dataset.target) * eased); });
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  if (!('IntersectionObserver' in window)) { run(); return; }
+  const io = new IntersectionObserver((entries, obs) => {
+    if (entries.some(en => en.isIntersecting)) { obs.disconnect(); run(); }
+  }, { threshold: 0.4 });
+  io.observe(root);
+}
+
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
     initNavScroll();
     initMobileMenu();
     initPhoneDemo();
+    renderWaveform();
+    initTabs();
+    initStatCounters();
   });
 }
