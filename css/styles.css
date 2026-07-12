@@ -140,6 +140,17 @@ button { font: inherit; cursor: pointer; }
   .how-we-work__inner { grid-template-columns: 1fr; gap: 0; }
   .how-we-work__image { aspect-ratio: 4/5; margin-bottom: 34px; }
   .how-we-work__content h2 { font-size: 40px; margin: 12px 0 32px; }
+
+  .cta-final { padding: 24px 20px 56px; }
+  .cta-final__ring { border-radius: 28px; }
+  .cta-final__inner { padding: 52px 24px; border-radius: 26px; }
+  .cta-final__inner h2 { font-size: 38px; line-height: 1.08; }
+  .cta-final__inner p { font-size: 16px; }
+  .cta-final__btn { margin-top: 28px; padding: 16px 26px; font-size: 14px; }
+
+  .footer { padding: 52px 22px 36px; }
+  .footer__grid { grid-template-columns: 1fr; gap: 34px; }
+  .footer__bottom { flex-direction: column; gap: 12px; }
 }
 
 /* ===== PHONE DEMO ===== */
@@ -299,3 +310,26 @@ button { font: inherit; cursor: pointer; }
 .step__body--active { background: #eef3fd; border-color: rgba(47,111,224,.25); box-shadow: 0 14px 34px rgba(47,111,224,.1); margin-bottom: 0; }
 .step__body h3 { font-size: 23px; font-weight: 800; letter-spacing: -.01em; color: var(--ink); margin: 0; }
 .step__body p { font-size: 16.5px; line-height: 1.5; color: var(--ink-soft); margin: 8px 0 0; }
+
+/* ===== FINAL CTA ===== */
+.cta-final { width: 100%; background: #ffffff; padding: 40px 40px 96px; }
+.cta-final__ring { max-width: 1440px; margin: 0 auto; border-radius: 34px; padding: 2px; background: linear-gradient(135deg,#7ba9f7 0%,#2f6fe0 50%,#12233f 100%); box-shadow: 0 24px 60px rgba(47,111,224,.18); }
+.cta-final__inner { border-radius: 32px; background: linear-gradient(180deg,#eaf3ff 0%,#bcd8fb 42%,#7fb0f2 78%,#5b93ec 100%); padding: 86px 40px; text-align: center; }
+.cta-final__inner h2 { font-family: var(--font-serif); font-weight: 400; font-size: 60px; line-height: 1.05; letter-spacing: -.015em; color: #12233f; margin: 0; text-wrap: balance; }
+.cta-final__inner p { font-size: 20px; line-height: 1.5; color: rgba(18,35,63,.72); margin: 20px 0 0; text-wrap: balance; }
+.cta-final__btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 38px; padding: 19px 40px; border-radius: 999px; background: linear-gradient(180deg,#3f8bf5,#2f6fe0); color: #fff; font-size: 16px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; box-shadow: 0 14px 40px rgba(47,111,224,.4); }
+.cta-final__btn:hover { opacity: .85; }
+
+/* ===== FOOTER ===== */
+.footer { width: 100%; background: #0e1b30; padding: 80px 40px 46px; }
+.footer__inner { max-width: 1440px; margin: 0 auto; }
+.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 56px; }
+.footer__logo { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 24px; letter-spacing: -.01em; color: #fff; }
+.footer__brand p { font-size: 16px; line-height: 1.6; color: rgba(200,214,238,.72); margin: 22px 0 0; max-width: 360px; }
+.footer__col-title { font-size: 12.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #6ea2f6; }
+.footer__col { display: flex; flex-direction: column; }
+.footer__col a, .footer__col span { font-size: 16.5px; color: rgba(214,226,246,.9); margin-top: 20px; }
+.footer__col a[href^="mailto"], .footer__col a[href^="https://calendly"] { color: #7fb0f2; }
+.footer__bottom { margin-top: 64px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.1); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; font-size: 14px; color: rgba(180,196,224,.6); }
+.footer__legal { display: flex; gap: 26px; }
+.footer__legal a { color: rgba(180,196,224,.6); margin-top: 0; }
