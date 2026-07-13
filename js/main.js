@@ -46,6 +46,9 @@ export function easeOutCubic(t) {
   return 1 - Math.pow(1 - t, 3);
 }
 
+const ELEVENLABS_AGENT_ID = 'agent_3201kxcj87s3fc0tk4cw9pztmp6q';
+const ELEVENLABS_SDK_URL = 'https://cdn.jsdelivr.net/npm/@elevenlabs/client@1.15.0/+esm';
+
 export function initPhoneDemo() {
   const phone = document.querySelector('.phone');
   if (!phone) return;
@@ -56,7 +59,7 @@ export function initPhoneDemo() {
   const startBtn = phone.querySelector('.phone__lock-start');
   const endBtn = phone.querySelector('.phone__end-call');
 
-  let drag = 0, dragging = false, startX = 0, timerId = null, seconds = 0;
+  let drag = 0, dragging = false, startX = 0, timerId = null, seconds = 0, conversation = null;
 
   const maxDrag = () => track ? track.clientWidth - 62 - 8 : 252;
 
@@ -68,13 +71,18 @@ export function initPhoneDemo() {
 
   const reset = () => {
     clearInterval(timerId);
+    if (conversation) {
+      const activeConversation = conversation;
+      conversation = null;
+      activeConversation.endSession().catch(() => {});
+    }
+    phone.classList.remove('phone--agent-speaking');
     screen.dataset.phase = 'ringing';
     statusLine.textContent = 'incoming call…';
     setDrag(0);
   };
 
-  const answer = () => {
-    screen.dataset.phase = 'live';
+  const startTimer = () => {
     seconds = 0;
     statusLine.textContent = formatCallTime(seconds);
     clearInterval(timerId);
@@ -82,6 +90,37 @@ export function initPhoneDemo() {
       seconds += 1;
       statusLine.textContent = formatCallTime(seconds);
     }, 1000);
+  };
+
+  const answer = async () => {
+    screen.dataset.phase = 'connecting';
+    statusLine.textContent = 'connecting…';
+    try {
+      const { Conversation } = await import(/* webpackIgnore: true */ ELEVENLABS_SDK_URL);
+      await navigator.mediaDevices.getUserMedia({ audio: true });
+      conversation = await Conversation.startSession({
+        agentId: ELEVENLABS_AGENT_ID,
+        connectionType: 'webrtc',
+        onConnect: () => {
+          screen.dataset.phase = 'live';
+          startTimer();
+        },
+        onDisconnect: () => { reset(); },
+        onModeChange: (mode) => {
+          const speaking = (typeof mode === 'string' ? mode : mode && mode.mode) === 'speaking';
+          phone.classList.toggle('phone--agent-speaking', speaking);
+        },
+        onError: (err) => {
+          console.error('ElevenLabs conversation error', err);
+          statusLine.textContent = 'call failed';
+          setTimeout(reset, 1600);
+        },
+      });
+    } catch (err) {
+      console.error('Could not start ElevenLabs conversation', err);
+      statusLine.textContent = 'mic access needed';
+      setTimeout(reset, 1600);
+    }
   };
 
   startBtn.addEventListener('click', () => {
