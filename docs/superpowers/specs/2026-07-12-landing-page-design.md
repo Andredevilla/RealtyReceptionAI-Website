@@ -99,14 +99,13 @@ not new design.
 
 `mountain-tall-1.png` and `how-we-work-a.png` from the design project both
 exceed the 256KB read cap of the tool used to pull files out of the design
-project, so they can't be fetched byte-for-byte. Per the user's choice,
-AI-generated stand-in photos are used instead (matching the same subject —
-mountain sunrise for the hero, a real-estate-agent lifestyle photo for the
-"how we work" section), resized/compressed to `assets/mountain-tall-1.jpg`
-(2200px wide) and `assets/how-we-work-a.jpg` (1200px wide). These are
-swappable placeholders — replace the two files (keeping the same paths, or
-updating the two `background-image`/`src` references in `index.html`/
-`css/styles.css`) once the real exported assets are available.
+project, so they couldn't be fetched byte-for-byte at build time.
+AI-generated stand-ins were used initially (matching subject only), then
+replaced with the user's own exports of the original design assets —
+`assets/mountain-tall-1.jpg` (896×1200 stylized mountain-sunrise
+illustration) and `assets/how-we-work-a.jpg` (896×1200 photo of a realtor
+with keys in front of a home), both recompressed to JPEG at the same
+dimensions to cut file size without altering content.
 
 ## Testing
 
