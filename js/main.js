@@ -214,6 +214,25 @@ export function initStatCounters() {
   io.observe(root);
 }
 
+export function initFaqAccordion() {
+  const items = document.querySelectorAll('.faq-item');
+  if (!items.length) return;
+  items.forEach(item => {
+    const question = item.querySelector('.faq-item__question');
+    question.addEventListener('click', () => {
+      const wasOpen = item.classList.contains('is-open');
+      items.forEach(other => {
+        other.classList.remove('is-open');
+        other.querySelector('.faq-item__question').setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.classList.add('is-open');
+        question.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+}
+
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', () => {
     initNavScroll();
@@ -222,5 +241,6 @@ if (typeof document !== 'undefined') {
     renderWaveform();
     initTabs();
     initStatCounters();
+    initFaqAccordion();
   });
 }
